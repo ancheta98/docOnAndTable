@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <h1>My assignment</h1>
+    <button id="createButton">click me!</button>
+    <div id="newButtons"></div>
+    <table>
+      <tr>
+        <th>name</th>
+        <th>email</th>
+        <th>age</th>
+      </tr>
+    </table>
+
+    <script>
+      $(document).ready(function() {
+        $("#createButton").click(function() {
+          console.log("you clicked a button");
+          $("#newButtons").append("<button id='dynamic'>new button</button>");
+          var myName = "Angel"
+          var email = "angel@email.com"
+          var age = 20
+          $("table").append("<tr><td>", myName, "</td><td>", email, "</td><td>", age, "</td></tr>")
+        });
+        //below will not work because it did not exist at doc ready
+        // $("#dynamic").click(function(){
+        //     console.log("you clicked a dynamic button")
+        //     $("#newButtons").append("<p>That was dynamic!</p>");
+        // })
+        $(document).on("click", "#dynamic", function() {
+          console.log("you clicked a dynamic button");
+          $("#newButtons").append("<p>That was dynamic!</p>");
+        });
+      });
+    </script>
+  </body>
+</html>
